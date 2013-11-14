@@ -2,22 +2,22 @@
   "name": "grunt-connect-route",
   "description": "Provides RewriteRules middleware for the grunt connect and express.",
   "version": "0.2.1",
-  "homepage": "https://github.com/viart/grunt-connect-rewrite",
+  "homepage": "https://github.com/zhongzhi107/grunt-connect-route",
   "author": {
-    "name": "Artem Vitiuk",
-    "email": "artem@devart.in.ua"
+    "name": "zhongzhi107",
+    "email": "zhong.zhi@163.com"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:viart/grunt-connect-rewrite.git"
+    "url": "git@github.com:zhongzhi107/grunt-connect-route.git"
   },
   "bugs": {
-    "url": "https://github.com/viart/grunt-connect-rewrite/issues"
+    "url": "https://github.com/zhongzhi107/grunt-connect-route/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/viart/grunt-connect-rewrite/blob/master/LICENSE-MIT"
+      "url": "https://github.com/zhongzhi107/grunt-connect-routee/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
