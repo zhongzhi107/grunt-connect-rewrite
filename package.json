@@ -1,7 +1,7 @@
 {
   "name": "grunt-connect-route",
   "description": "Provides RewriteRules middleware for the grunt connect and express.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/zhongzhi107/grunt-connect-route",
   "author": {
     "name": "zhongzhi107",
