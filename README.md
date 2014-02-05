@@ -1,4 +1,4 @@
-# grunt-connect-rewrite
+# grunt-connect-route
 
 > This plugin provides RewriteRules middleware for the Grunt Connect / Express.
 
@@ -14,7 +14,7 @@ npm install grunt-connect-rewrite --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-connect-rewrite');
+grunt.loadNpmTasks('grunt-connect-route');
 ```
 
 ## Adapting the "connect" task
@@ -36,7 +36,9 @@ grunt.initConfig({
         rules: {
             '^/index_dev.html$': '/src/index.html',
             '^/js/(.*)$': '/src/js/$1',
-            '^/css/(.*)$': '/public/css/$1'
+            '^/css/(.*)$': '/public/css/$1',
+			'^/api/(.*)': 'require!/app/api/$1.js',
+			'^/api/(.*)' : 'http://l-wap1.test.com:8080/api/$1',
         }
     }
 })
@@ -71,7 +73,7 @@ grunt.initConfig({
 #### Adding the middleware
 Include helper to use in the middleware (add this line to the top of the grunt file):
 ```js
-var rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;
+var rewriteRulesSnippet = require('grunt-connect-route/lib/utils').rewriteRequest;
 ```
 
 Add the RewriteRules snippet to the connect option middleware hook
