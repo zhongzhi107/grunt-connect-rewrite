@@ -1,7 +1,7 @@
 {
   "name": "grunt-connect-route",
   "description": "Provides RewriteRules middleware for the grunt connect and express.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/zhongzhi107/grunt-connect-route",
   "author": {
     "name": "zhongzhi107",
@@ -27,12 +27,14 @@
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "http-proxy-zz": "~0.10.5"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt": "~0.4.1",
-    "http-proxy": "0.10.4"
+    "grunt": "~0.4.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"
@@ -48,8 +50,24 @@
     "connect",
     "express"
   ],
-  "readme": "# grunt-connect-rewrite\r\n\r\n> This plugin provides RewriteRules middleware for the Grunt Connect / Express.\r\n\r\n## Getting Started\r\nThis plugin requires Grunt `~0.4.1`\r\n\r\nIf you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:\r\n\r\n```shell\r\nnpm install grunt-connect-rewrite --save-dev\r\n```\r\n\r\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\r\n\r\n```js\r\ngrunt.loadNpmTasks('grunt-connect-rewrite');\r\n```\r\n\r\n## Adapting the \"connect\" task\r\n\r\n### Overview\r\n\r\n#### Rules Configuration\r\nIn your project's Gruntfile, add a section named `rules` to your existing connect definition.\r\nPlease note that unlike options, rules cannot be set per server, so the rules attribute must always\r\nbe nested directly under 'connect'.\r\n\r\n```js\r\ngrunt.initConfig({\r\n    connect: {\r\n        options: {\r\n            port: 9000,\r\n            hostname: 'localhost'\r\n        },\r\n        rules: {\r\n            '^/index_dev.html$': '/src/index.html',\r\n            '^/js/(.*)$': '/src/js/$1',\r\n            '^/css/(.*)$': '/public/css/$1'\r\n        }\r\n    }\r\n})\r\n```\r\n\r\nYou may also optionally read rules from a different grunt config, like so:\r\n\r\n```js\r\ngrunt.initConfig({\r\n    express: {\r\n        options: {\r\n            port: 9000\r\n        },\r\n        server: {\r\n            hostname: 'localhost'\r\n        },\r\n        rules: {\r\n            '^/index_dev.html$': '/src/index.html',\r\n            '^/js/(.*)$': '/src/js/$1',\r\n            '^/css/(.*)$': '/public/css/$1'\r\n        }\r\n    },\r\n    configureRewriteRules: {\r\n        options: {\r\n            rulesProvider: 'express.rules'\r\n        }\r\n    }\r\n}\r\n})\r\n```\r\n\r\n#### Adding the middleware\r\nInclude helper to use in the middleware (add this line to the top of the grunt file):\r\n```js\r\nvar rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;\r\n```\r\n\r\nAdd the RewriteRules snippet to the connect option middleware hook\r\n```js\r\nconnect: {\r\n    development: {\r\n        options: {\r\n            middleware: function (connect) {\r\n                return [\r\n                    rewriteRulesSnippet, // RewriteRules support\r\n                    connect.static(require('path').resolve(options.base)) // mount filesystem\r\n                ];\r\n            }\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n### Adding the \"configureRewriteRules\" task to the server task\r\nFor the server task, add the \"configureRewriteRules\" task before the \"connect\" task\r\n```js\r\ngrunt.registerTask('server', function (target) {\r\n    grunt.task.run([\r\n        'configureRewriteRules',\r\n        'connect:development'\r\n    ]);\r\n});\r\n```\r\n\r\n## Contributing\r\nIn lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).\r\n\r\n## Release History\r\n* 2013.07.27 `v0.1.1` Add possibility to read settings from custom grunt config path\r\n* 2013.04.12 `v0.1.0` Initial Release\r\n",
-  "readmeFilename": "README.md",
-  "_id": "grunt-connect-route@0.2.3",
-  "_from": "grunt-connect-route@0.2.3"
+  "_id": "grunt-connect-route@0.2.7",
+  "_from": "grunt-connect-route@0.2.7",
+  "dist": {
+    "shasum": "30840cd1f17da58628de3a1ebb3c9c76b3a05800",
+    "tarball": "http://registry.npmjs.org/grunt-connect-route/-/grunt-connect-route-0.2.7.tgz"
+  },
+  "_npmVersion": "1.4.14",
+  "_npmUser": {
+    "name": "zhongzhi",
+    "email": "zhong.zhi@163.com"
+  },
+  "maintainers": [
+    {
+      "name": "zhongzhi",
+      "email": "zhong.zhi@163.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "30840cd1f17da58628de3a1ebb3c9c76b3a05800",
+  "_resolved": "https://registry.npmjs.org/grunt-connect-route/-/grunt-connect-route-0.2.7.tgz"
 }
